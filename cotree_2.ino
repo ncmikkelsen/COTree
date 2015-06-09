@@ -58,29 +58,36 @@ void loop() {
   }
 }
 
-void wither(){
+
+
+//Makes the leaves wither for t seconds
+void wither(int t){
 	//Simple turn on then off once
 	digitalWrite(wPin, HIGH);
-	delay(10);
+	delay(t * 1000);
 	digitalWrite(wPin, LOW);
-
-	/*
-		TODO: Create a for-loop version that will wither over a longer period of time
-	*/
-
-	stretch();
 }
 
-void stretch(){
+
+//Makes the leaves stretch for t seconds
+void stretch(int t){
 	//Simple turn on then off once
 	digitalWrite(sPin, HIGH);
-	delay(5 * 1000);
+	delay(t * 1000);
 	digitalWrite(sPin, LOW);
+}
 
-	/*
-		TODO: Create a for-loop version that will wither over a longer period of time
 
-	*/
+
+
+//TODO: Create a for-loop version of wither that will wither over a longer period of time
+void witherPulse(){
+
+}
+
+//TODO: Create a for-loop version that will wither over a longer period of time
+void stretchPulse(){
+
 }
 
 void updateVals(){
