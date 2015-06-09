@@ -60,6 +60,17 @@ void loop() {
 
 
 
+// ----- Simple movement methods begins here ----- //
+
+//Makes the leaves wither for wT seconds, then after a delay of dT seconds it will stretch the leaves for sT seconds. 
+//After that it will cool of for cT seconds before returning to normal behaviour. 
+void simpleCycle(int wT, int dT, int sT, int cT){
+	wither(wT);
+	delay(dT * 1000);
+	stretch(sT, cT);
+}
+
+
 //Makes the leaves wither for t seconds
 void wither(int t){
 	//Simple turn on then off once
@@ -70,15 +81,25 @@ void wither(int t){
 
 
 //Makes the leaves stretch for t seconds
-void stretch(int t){
+void stretch(int t, int c){
 	//Simple turn on then off once
 	digitalWrite(sPin, HIGH);
 	delay(t * 1000);
 	digitalWrite(sPin, LOW);
+	delay(c * 1000);
 }
 
+// ----- Simple movement methods ends here ----- //
 
 
+
+
+// ----- Pulse movement methods begins here ----- //
+
+
+void pulseCycle(){
+
+}
 
 //TODO: Create a for-loop version of wither that will wither over a longer period of time
 void witherPulse(){
@@ -89,6 +110,10 @@ void witherPulse(){
 void stretchPulse(){
 
 }
+
+// ----- Pulse movement methods ends here ----- //
+
+
 
 void updateVals(){
 	//Updating the current value
