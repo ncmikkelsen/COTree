@@ -1,7 +1,14 @@
+/*
+  Rød= 5V
+  gul=12V
+  orange=3.3v (så vidt jeg husker)
+  sort=jord/nul
+*/
+
 // Wither pin
-int wPin = 2;
+int wPin = 3;
 //Stretch pin
-int sPin = 3;
+int sPin = 2;
 //CO2 sensor pin
 int cPin = 4;
 
@@ -11,7 +18,7 @@ int cVal = 0;
 int tVal = 0;
 //The value moving the threshold
 //Lower this to increase the time between wither and stretch cycles. Increase it for the opposite effect.
-int mVal = 1;
+int mVal = 10;
 
 //Average value
 float aVal = 0;
@@ -52,10 +59,10 @@ void loop() {
 		//Else the threshold value will be lowered according to mVal to increase the likelyhood of a reaction from COTree
 		
 		if(cVal >= tVal){
-			simpleCycle(2, 0.5, 2, 0.5);
+			simpleCycle(10, 4, 6, 12);
 			//tVal = cVal;
                         
-                        tVal = cVal + ((60/dTime)*mVal);
+                        tVal = cVal + ((20/dTime)*mVal);
 		} else{
 			tVal -= mVal;
 		}
@@ -83,7 +90,7 @@ void simpleCycle(int wT, int dT, int sT, int cT){
         Serial.println();
 	delay(dT * 1000);
 
-        Serial.println("***** STRETCH THEN DELAY *****");
+        Serial.println("***** STRETCH THEN DELAY *****");  
         Serial.println();
 	stretch(sT, cT);
 }
@@ -184,10 +191,10 @@ void printVals(){
 //For testing purposes
 void checkSerial(){
 	char c;
-	int wT = 2;
-	int dT = 2;
-	int sT = 2;
-	int cT = 2;
+	int wT = 10;
+	int dT = 4;
+	int sT = 6;
+	int cT = 12;
 
 	if(Serial.available()){
 		c = Serial.read();
